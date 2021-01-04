@@ -7,7 +7,6 @@ import AppLoading from 'expo-app-loading'
 
 import * as Font from 'expo-font'
 
-// import Navigator from './routes/homeStack'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -18,6 +17,8 @@ const Drawer = createDrawerNavigator()
 
 import MainTabScreen from './screens/MainTabScreen'
 import DrawerContent from './screens/DrawerContent'
+import TournamentStackScreen from './screens/TournamentStackScreen';
+import ProfileStackScreen from './screens/ProfileStackScreen';
 
 
 const getFonts = () => Font.loadAsync({
@@ -31,12 +32,13 @@ export default App = () => {
 
   if(fontsLoaded){
       return(
-        // <Navigator />
+
         <NavigationContainer>
           <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-            <Drawer.Screen name='Home' component={MainTabScreen}/>
-            {/* <Drawer.Screen name="Home" component={HomeStackScreen} />
-            <Drawer.Screen name="About" component={AboutStackScreen} /> */}
+            <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
+            {/* <Drawer.Screen name='Tournaments' component={TournamentStackScreen} /> */}
+            {/* <Drawer.Screen name='Profile' component={ProfileStackScreen} /> */}
+
           </Drawer.Navigator>
         </NavigationContainer>
       )
