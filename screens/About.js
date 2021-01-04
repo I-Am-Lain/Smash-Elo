@@ -1,17 +1,22 @@
 import React from 'react'
-import { StyleSheet, View, Text } from  'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from  'react-native'
 
-export default function About() {
+import { global } from '../styles/global'
+
+export default function About(props) {
+
+    const handlePress = () => {
+        props.navigation.goBack()
+        // navigation.goBack() will pop one off
+        // navigation.popToTop()
+    }
+
     return (
-        <View style={styles.container}>
-            <Text> About Screen </Text>
+        <View style={global.container}>
+            <Text style={global.titleText}> About Screen </Text>
+            <TouchableOpacity style={global.button} onPress={handlePress} >
+                <Text>Back to Home</Text>
+            </TouchableOpacity>
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 24
-    }
-})

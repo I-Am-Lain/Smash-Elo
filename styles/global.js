@@ -5,7 +5,7 @@ export const global = StyleSheet.create({
     container: {
         flex: 1,
         padding: 30,
-        paddingTop: 50,
+        paddingTop: 100,
         alignItems: 'center'
     },
     titleText: {
