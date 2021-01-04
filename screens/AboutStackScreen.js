@@ -12,7 +12,7 @@ export default AboutStackScreen = ({navigation}) => {
     return (
         <AboutStack.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: '#009387'
+                backgroundColor: '#d02860'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -23,7 +23,7 @@ export default AboutStackScreen = ({navigation}) => {
                 title: 'About Lordy Hotdogs!!!!',
                 headerLeft: () => (
                     <Icon.Button name='ios-menu' size={25}
-                    backgroundColor='#009387' onPress={() => navigation.openDrawer()}></Icon.Button>
+                    backgroundColor='#d02860' onPress={() => navigation.openDrawer()}></Icon.Button>
                 )
             }} />
         </AboutStack.Navigator>
