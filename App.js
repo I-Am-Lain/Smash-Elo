@@ -17,6 +17,7 @@ const Drawer = createDrawerNavigator()
 
 
 import MainTabScreen from './screens/MainTabScreen'
+import DrawerContent from './screens/DrawerContent'
 
 
 const getFonts = () => Font.loadAsync({
@@ -32,7 +33,7 @@ export default App = () => {
       return(
         // <Navigator />
         <NavigationContainer>
-          <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
             <Drawer.Screen name='Home' component={MainTabScreen}/>
             {/* <Drawer.Screen name="Home" component={HomeStackScreen} />
             <Drawer.Screen name="About" component={AboutStackScreen} /> */}
