@@ -17,8 +17,11 @@ const Drawer = createDrawerNavigator()
 
 import MainTabScreen from './screens/MainTabScreen'
 import DrawerContent from './screens/DrawerContent'
-import TournamentStackScreen from './screens/TournamentStackScreen';
-import ProfileStackScreen from './screens/ProfileStackScreen';
+
+
+import SupportScreen from './screens/SupportScreen'
+
+import RootStackScreen from './screens/root_screens/RootStackScreen'
 
 
 const getFonts = () => Font.loadAsync({
@@ -34,12 +37,13 @@ export default App = () => {
       return(
 
         <NavigationContainer>
-          <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-            <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
-            {/* <Drawer.Screen name='Tournaments' component={TournamentStackScreen} /> */}
-            {/* <Drawer.Screen name='Profile' component={ProfileStackScreen} /> */}
+          <RootStackScreen />
+          {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
 
-          </Drawer.Navigator>
+            <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
+            <Drawer.Screen name='Support' component={SupportScreen} />
+
+          </Drawer.Navigator> */}
         </NavigationContainer>
       )
   } else {

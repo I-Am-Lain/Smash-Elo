@@ -63,7 +63,7 @@ export default DrawerContent = (props) => {
                                     100
                                 </Paragraph>
                                 <Caption style={global.caption} >
-                                    Following
+                                    Followers
                                 </Caption>
                             </View>
                         </View>
@@ -89,7 +89,7 @@ export default DrawerContent = (props) => {
                         />
                         <DrawerItem
                             icon={({color, size}) => (
-                                <Icon name='alarm-note' color={color} size={size}/>
+                                <Icon name='nintendo-game-boy' color={color} size={size}/>
 
                             )}
                             label='Tournaments'
@@ -103,6 +103,14 @@ export default DrawerContent = (props) => {
                             label='Settings'
                             onPress={() => {props.navigation.navigate('About')}}
                         />
+                        <DrawerItem
+                            icon={({color, size}) => (
+                                <Icon name='one-up' color={color} size={size}/>
+
+                            )}
+                            label='Support'
+                            onPress={() => {props.navigation.navigate('Support')}}
+                        />
                     </Drawer.Section>
 
                     <Drawer.Section title='Preferences'>
@@ -115,6 +123,8 @@ export default DrawerContent = (props) => {
                                 </View>
                             </TouchableRipple>
                     </Drawer.Section>
+
+                    
                 </View>
             </DrawerContentScrollView>
             
