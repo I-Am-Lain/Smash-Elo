@@ -49,6 +49,24 @@ export default SignInScreen = (props) => {
         })
     }
 
+    const handleSignIn = () => {
+
+        const configRequest = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: login.email, password: login.password})
+        }
+
+        fetch('http://192.168.1.11:4000/api/v1/auth', configRequest)
+        .then(resp => resp.json())
+        .then(json => console.log(json))
+
+        // fetch('http://localhost:4000/api/v1/auth', configRequest)
+        // .then(resp => resp.json())
+        // .then(json => console.log(json))
+    }
 
 
     return (
@@ -65,7 +83,7 @@ export default SignInScreen = (props) => {
             <Animatable.View style={styles.footer} animation='fadeInUpBig'>
 
 
-                <Text style={styles.textFooter}>Email</Text>
+                <Text style={styles.textFooter}>Gmail</Text>
 
                 <View style={styles.action}>
                     <FontAwesome
@@ -136,9 +154,11 @@ export default SignInScreen = (props) => {
                         colors={['#08d4c4', '#01ab9d']}
                         style={styles.signIn}
                     >
+                    <TouchableOpacity style={{width: '100%', alignItems: 'center'}} onPress={handleSignIn}> 
                         <Text style={[styles.textSign, {color: '#fff'}]}>
                             Sign In
                         </Text>
+                    </TouchableOpacity> 
                     </LinearGradient>
 
                     <TouchableOpacity 

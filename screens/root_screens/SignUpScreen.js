@@ -183,14 +183,16 @@ export default SignInScreen = (props) => {
 
 
                 <View style={styles.button}>
-                    <LinearGradient 
-                        colors={['#08d4c4', '#01ab9d']}
-                        style={styles.signIn}
-                    >
-                        <Text style={[styles.textSign, {color: '#fff'}]}>
-                            Sign Up
-                        </Text>
-                    </LinearGradient>
+                    <TouchableOpacity style={{width: '100%', alignItems: 'center'}}> 
+                        <LinearGradient 
+                            colors={['#08d4c4', '#01ab9d']}
+                            style={styles.signIn}
+                        >
+                            <Text style={[styles.textSign, {color: '#fff'}]}>
+                                Sign Up
+                            </Text>
+                        </LinearGradient>
+                    </TouchableOpacity> 
 
                     <TouchableOpacity 
                         onPress={() => props.navigation.goBack()}
