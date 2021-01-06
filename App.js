@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 
 import AppLoading from 'expo-app-loading'
 
@@ -32,18 +32,67 @@ const getFonts = () => Font.loadAsync({
 export default App = () => {
 
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    // confirm if user is logged in or not
+    //MAY HAVE TO USE SET TIMEOUT TO ALLOW TIME FOR API TO RETURN CORRECT COMPONENT
+
+    // const token = await AsyncStorage.getItem('babysfirstkey')
+    // if (token)
+    //    fetch data about user from API
+    //    set Redux State with it
+    //    take me 2 Home
+    // else 
+    //    take me 2 login
+    
+    // !!! apparently don't use async functions in useEffect
+    async function fetchCredentials() {
+      setLoggedIn(await AsyncStorage.getItem('babysfirstkeyyyy')); // .then similar to async/await
+ 
+    }
+
+    fetchCredentials();
+    
+    // const readData = async () => {
+    //   try {
+    //     const userAge = await AsyncStorage.getItem('babysthirdkey').then(setLoggedIn(true))
+    
+    //     if (userAge !== null) {
+    //       console.log('success')
+    //     } else {console.log('failure')}
+    //   } catch (e) {
+    //     alert('Failed to fetch the data from storage')
+    //   }
+
+    // }
+
+    // readData()
+  }, [])
+
 
   if(fontsLoaded){
       return(
-
+        
         <NavigationContainer>
-          <RootStackScreen />
-          {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
 
-            <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
-            <Drawer.Screen name='Support' component={SupportScreen} />
 
-          </Drawer.Navigator> */}
+
+          {
+
+            loggedIn ?
+            <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
+
+              <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
+              <Drawer.Screen name='Support' component={SupportScreen} />
+
+            </Drawer.Navigator>
+            :
+            <RootStackScreen />
+          }
+            
+            
+
         </NavigationContainer>
       )
   } else {

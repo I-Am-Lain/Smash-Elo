@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Button, StyleSheet, TouchableOpacity, Dimensions, Platform, TextInput, StatusBar } from 'react-native'
+import { AsyncStorage, View, Text, Button, StyleSheet, TouchableOpacity, Dimensions, Platform, TextInput, StatusBar } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -61,11 +61,50 @@ export default SignInScreen = (props) => {
 
         fetch('http://192.168.1.11:4000/api/v1/auth', configRequest)
         .then(resp => resp.json())
-        .then(json => console.log(json))
+        .then(json => {
+            console.log(json)
+            if (json.error){
+                alert('WRONG')
+            } else {
+                //dispatch action to reducer with LOGIN_SUCCESS, with user data
+                //save user token in AsyncStorage
+                //redirect to props.navigation.navigate('Home')
 
-        // fetch('http://localhost:4000/api/v1/auth', configRequest)
-        // .then(resp => resp.json())
-        // .then(json => console.log(json))
+                alert('SUCCESS'); // this semicolon prevents JS from returning the async() to console.log
+                
+
+
+                // const saveData = async () => {
+                //     try {
+                //       await AsyncStorage.setItem('babysthirdkey', '1234')
+                //       alert('Data successfully saved')
+                //     } catch (e) {
+                //       alert('Failed to save the data to the storage')
+                //     }
+                // }
+
+                // saveData()
+                
+
+                
+                // const readData = async () => {
+                //     try {
+                //       const userAge = await AsyncStorage.getItem('babysfirstkey')
+                  
+                //       if (userAge !== null) {
+                //         console.log(userAge)
+                //       } else {console.log('failure')}
+                //     } catch (e) {
+                //       alert('Failed to fetch the data from storage')
+                //     }
+
+                // }
+    
+                // console.log(readData()) // this is just returning a promise
+
+                
+            }
+        })
     }
 
 
