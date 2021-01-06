@@ -5,26 +5,31 @@ import { View, Text, Button, StyleSheet, Dimensions, Image, TouchableOpacity } f
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-export default SplashScreen = () => {
+import * as Animatable from 'react-native-animatable'
+
+export default SplashScreen = (props) => {
     return (
         <View style={styles.container}>
 
 
 
             <View style={styles.header}>
-                <Image 
+                <Animatable.Image
+                    animation='bounceIn'
+                    duration={2000}
                 source={require('../../assets/logo.png')}
                 styles={styles.logo}
                 resizeMode="stretch"
                 />
             </View>
 
-            <View style={styles.footer}>
+            <Animatable.View style={styles.footer} animation='fadeInUpBig'>
+                
                 <Text style={styles.title}>Stay connected with everyone!</Text>
                 <Text style={styles.text}>Sign in with account</Text>  
 
                 <View style={styles.button}>
-                    <TouchableOpacity onPress={() => {alert('i was clicked')}}>
+                    <TouchableOpacity onPress={() => {props.navigation.navigate('SignInScreen')}}>
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}
@@ -39,7 +44,7 @@ export default SplashScreen = () => {
                     </TouchableOpacity>       
                 </View>  
 
-            </View>
+            </Animatable.View>
 
 
 
