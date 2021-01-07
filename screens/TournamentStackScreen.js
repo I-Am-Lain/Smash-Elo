@@ -72,13 +72,11 @@ class TournamentStackScreen extends React.Component {
                     // }
                 })
 
-                this.mounted ?
+                
                 this.setState({
                     setArray: myTournamentData
                 })
-                :
-                console.log('notmounted')
-
+                
                 console.log(this.state)
 
                 }, 3000);
