@@ -67,18 +67,16 @@ const DrawerContent = (props) => {
                         <View style={global.row}>
                             <View style={global.section} >
                                 <Paragraph style={[global.paragraph, global.caption]}>
-                                    Bank
+                                    $1,000
                                 </Paragraph>
-                                <Caption style={global.caption} >
-                                    $1000
-                                </Caption>
+
                             </View>
                             <View style={global.section} >
                                 <Paragraph style={[global.paragraph, global.caption]}>
-                                    icon
+                                    
                                 </Paragraph>
                                 <Caption style={global.caption} >
-                                    Reload Available
+                                    Reload Unavailable :(
                                 </Caption>
                             </View>
                         </View>
@@ -99,7 +97,7 @@ const DrawerContent = (props) => {
                                 <Icon name='account-outline' color={color} size={size}/>
 
                             )}
-                            label='Profile'
+                            label='Leaderboards'
                             onPress={() => {props.navigation.navigate('Profile')}}
                         />
                         <DrawerItem

@@ -20,7 +20,7 @@ export default AboutStackScreen = ({navigation}) => {
             }
         }}>
             <AboutStack.Screen name='About' component={About} options={{
-                title: 'About Lordy Hotdogs!!!!',
+                title: 'About',
                 headerLeft: () => (
                     <Icon.Button name='ios-menu' size={25}
                     backgroundColor='#d02860' onPress={() => navigation.openDrawer()}></Icon.Button>

@@ -13,7 +13,7 @@ export default function About(props) {
 
     return (
         <View style={global.container}>
-            <Text style={global.titleText}> About Screen </Text>
+            <Text style={global.titleText}>  </Text>
             <TouchableOpacity style={global.button} onPress={handlePress} >
                 <Text>Back to Home</Text>
             </TouchableOpacity>

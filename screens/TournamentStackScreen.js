@@ -70,7 +70,7 @@ class TournamentStackScreen extends React.Component {
             this.timerID = setInterval(async () => {
                 const resp = await fetch('https://api.smash.gg/gql/alpha', configRequest);
                 const jsonResponse = await resp.json();
-                    console.log(jsonResponse)
+                    // console.log(jsonResponse)
 
                     this.props.tournamentSuccess(jsonResponse);
 

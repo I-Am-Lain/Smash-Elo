@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from  'react-native'
+import { View, Text, TouchableOpacity, TextInput } from  'react-native'
 
 import { global } from '../styles/global'
 
@@ -18,13 +18,14 @@ export default function Card(props) {
         <View style={global.container}>
 
 
-            <Text style={global.titleText}> Card Screen </Text>
+            <Text style={global.titleText}> Please your bets </Text>
 
 
             <TouchableOpacity style={global.button} onPress={handlePress} >
                 <Text>Back to Home</Text>
             </TouchableOpacity>
 
+            <TextInput placeholder='place your bets...'/>
 
             <View style={global.container}>
                 <WebView style={{ width: 360}}
@@ -34,7 +35,7 @@ export default function Card(props) {
                     source={{ uri: "http://www.twitch.tv/saltybet" }}
                 />
             </View>
-
+            
 
         </View>
     )

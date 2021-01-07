@@ -16,10 +16,13 @@ class Tournaments extends React.Component {
     }
 
     componentDidMount(){
-        console.log('===========================================================================')
+
         this.setState({
             cardTournaments: this.props.tournaments
         })
+
+
+        
     }
 
 
@@ -35,18 +38,49 @@ class Tournaments extends React.Component {
 
     }
 
+    //make fake buttons for my tournament pages being displayed
+    //those pages need to connect to redux store and grab their appropriate infos
+
     render(){
         return (
             <View style={global.container}>
 
-                <Text style={global.titleText}> Tournaments Screen </Text>
+                <Text style={[global.titleText, {paddingTop: 20}]}> Upcoming Events </Text>
 
-                <TouchableOpacity style={global.button} onPress={this.goBack} >    
-                    <Text>Go back</Text>
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('Bourbon State Gaming: Barrel Bash V')} >    
+                    <Text style={{width: 250}}>Bourbon State Gaming: Barrel Bash V</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('da steve weely')} >    
+                    <Text>da steve weely</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('2020 Kelvins Test Tournaments')} >    
+                    <Text>2020 Kelvins Test Tournaments</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('Hello World')} >    
+                    <Text>Hello World</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('Lincs Awakening 2: A Smash Regional (Postponed indefinitely due to COVID-19)')} >    
+                    <Text>Lincs Awakening 2: A Smash Regional</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('GO TO SMASH.GG/SAXU')} >    
+                    <Text>GO TO SMASH.GG/SAXU</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('Smash Things 2030 (ALL DLC)')} >    
+                    <Text>Smash Things 2030 (ALL DLC)</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={[global.button, {width: 300, marginTop: 30}]} onPress={() => this.props.navigation.navigate('CEO 2020 Fighting Game Championships')} >    
+                    <Text>CEO 2020 Fighting Game Championships</Text>
                 </TouchableOpacity>
 
                 {
-                    this.state.cardTournaments !== null ?
+                    this.props.tournaments !== null || Object.keys(this.state.myTournaments).length !== 0 || this.props.tournaments !== [] ?
                     // this.state.cardTournaments.data.tournaments.nodes.map(node => {
                     //     return(
                     //     <TouchableOpacity style={global.button} onPress={() => handlePress(node.name)} >    
@@ -54,7 +88,8 @@ class Tournaments extends React.Component {
                     //     </TouchableOpacity>
                     //     )
                     // })
-                    console.log('iam truthy')
+                    null
+                    // console.log(this.props)
                     :
                     console.log('TOURNAMENTS.JS STILL BROKEN!!!!!!!!!!!!!!!!!!!!!!!!')
                 

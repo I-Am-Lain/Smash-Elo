@@ -40,10 +40,10 @@ export default MainTabScreen = () => (
             }}
         />
         <Tab.Screen
-            name="Profile"
+            name="Leaderboard"
             component={ProfileStackScreen}
             options={{
-            tabBarLabel: 'Profile',
+            tabBarLabel: 'Leaderboard',
             tabBarColor: '#694fad',
             
             tabBarIcon: ({ color }) => (

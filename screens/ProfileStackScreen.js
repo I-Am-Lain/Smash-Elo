@@ -20,7 +20,7 @@ export default ProfileStackScreen = ({navigation}) => {
             }
         }}>
             <ProfileStack.Screen name='Profile' component={Profile} options={{
-                title: 'Profile',
+                title: 'Leaderboards',
                 headerLeft: () => (
                     <Icon.Button name='ios-menu' size={25}
                     backgroundColor='#694fad' onPress={() => navigation.openDrawer()}></Icon.Button>

@@ -13,7 +13,7 @@ export default function Profile(props) {
 
     return (
         <View style={global.container}>
-            <Text style={global.titleText}> Profile Screen </Text>
+            <Text style={global.titleText}> The Leaderboard </Text>
             <TouchableOpacity style={global.button} onPress={handlePress} >
                 <Text>Back to Home</Text>
             </TouchableOpacity>
