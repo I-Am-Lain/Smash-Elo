@@ -5,10 +5,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 
+import {StackActions} from 'react-navigation'
+
 
 import * as Animatable from 'react-native-animatable'
 
-export default SignInScreen = (props) => {
+import { connect } from 'react-redux'
+import { loginSuccess } from '../../actions/'
+
+import { CommonActions } from '@react-navigation/native';
+
+const SignInScreen = (props) => {
 
 
     const [login, setLogin] = useState({
@@ -58,13 +65,14 @@ export default SignInScreen = (props) => {
             },
             body: JSON.stringify({username: login.email, password: login.password})
         }
+        
 
         fetch('http://192.168.1.11:4000/api/v1/auth', configRequest)
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
             if (json.error){
-                alert('WRONG')
+                alert('WRONGG')
             } else {
                 //dispatch action to reducer with LOGIN_SUCCESS, with user data
                 //save user token in AsyncStorage
@@ -72,20 +80,38 @@ export default SignInScreen = (props) => {
 
                 alert('SUCCESS'); // this semicolon prevents JS from returning the async() to console.log
                 
+                console.log(json)
+                console.log('yayuhzzzzzzzz')
 
 
-                // const saveData = async () => {
-                //     try {
-                //       await AsyncStorage.setItem('babysthirdkey', '1234')
-                //       alert('Data successfully saved')
-                //     } catch (e) {
-                //       alert('Failed to save the data to the storage')
-                //     }
-                // }
+                const saveData = async () => {
+                    try {
+                      await AsyncStorage.setItem('lainskeyyyy', json.token)
+                      alert('Data successfully saved in Async Storage :)')
+                    } catch (e) {
+                      alert('Failed to save the data to the storage :(')
+                    }
+                }
 
-                // saveData()
+                props.loginSuccess(json)
+
+                saveData()
+
+                // props.navigation.dispatch(
+                //     CommonActions.navigate({
+                //       name: 'MainTabScreen'
+                //     })
+                //   );
+
+
+                // const navigateAction = StackActions.reset({
+                //     index: 0,
+                //     key: null,
+                //     actions: [CommonActions.navigate({ routeName: 'Support' })]
+                // })
+                // this.props.navigation.dispatch(navigateAction)
                 
-
+                // props.navigation.navigate('DrawerContent', { screen: 'Home' } )
                 
                 // const readData = async () => {
                 //     try {
@@ -276,3 +302,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 })
+
+
+
+export default connect(null, { loginSuccess })(SignInScreen)

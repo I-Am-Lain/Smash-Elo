@@ -1,5 +1,6 @@
 {
   "expo": {
+    "entryPoint": "./index.js",
     "name": "smash-elo",
     "slug": "smash-elo",
     "version": "1.0.0",

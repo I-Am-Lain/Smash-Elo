@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 
@@ -24,15 +24,29 @@ import SupportScreen from './screens/SupportScreen'
 import RootStackScreen from './screens/root_screens/RootStackScreen'
 
 
+import { Provider, connect } from 'react-redux'
+// import { createStore } from 'redux'
+import { loginSuccess } from './actions/'
+
+// import rootReducer from './reducers/'
+
+// const store = createStore(rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//   window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
+
+
 const getFonts = () => Font.loadAsync({
   'xanhmono-regular': require('./assets/fonts/XanhMono-Regular.ttf'),
   'xanhmono-italic': require('./assets/fonts/XanhMono-Italic.ttf')
 })
 
-export default App = () => {
+const App = (props) => {
 
   const [fontsLoaded, setFontsLoaded] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
+  const [myToken, setMyToken] = useState(null)
+  
 
   useEffect(() => {
     // confirm if user is logged in or not
@@ -48,8 +62,45 @@ export default App = () => {
     
     // !!! apparently don't use async functions in useEffect
     async function fetchCredentials() {
-      setLoggedIn(await AsyncStorage.getItem('babysfirstkeyyyy')); // .then similar to async/await
- 
+      // loginSuccess(await AsyncStorage.getItem('change me to lainskey'));
+      userToken = await AsyncStorage.getItem('lainskeyyyy');
+
+      userToken !== null ?
+      fetch('http://192.168.1.11:4000/api/v1/auth/1', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userToken}`
+        }
+    })
+      .then(resp => resp.json())
+      .then(json => {
+          console.log(json);
+          console.log(props)
+          console.log('yesss');
+          // setMyToken(json.token)
+          // json.user.bank=5000
+          props.loginSuccess(json)
+
+          console.log(props,' 444')
+          // console.log(myToken)
+          // console.log(store.getState().user.bank)
+
+
+          // 1st try with store.getState()
+          // try with passing function
+          // hook context
+          // create higher level component
+          // thunk
+
+          // i either need to use Hooks and Context, or.... somehow access store. or store.getState()/store.dispatch
+
+          // console.log(store.getState());
+          // props.loginSuccess(json);     breaking if i connect
+          // console.log(store.getState().token)
+      })
+      :
+      console.log('uhhhhhhhhhhhhhhhhhhhhhhhhhhhh', props.token)
     }
 
     fetchCredentials();
@@ -73,27 +124,28 @@ export default App = () => {
 
   if(fontsLoaded){
       return(
-        
-        <NavigationContainer>
+        /* could do class */
+        // <Provider store={store}>
+          <NavigationContainer>
 
 
+            {
+              
+              props.token === null ?
+              <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
 
-          {
+                <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
+                <Drawer.Screen name='Support' component={SupportScreen} />
 
-            loggedIn ?
-            <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
+              </Drawer.Navigator>
+              :
+              <RootStackScreen />
+            }
+              
+              
 
-              <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
-              <Drawer.Screen name='Support' component={SupportScreen} />
-
-            </Drawer.Navigator>
-            :
-            <RootStackScreen />
-          }
-            
-            
-
-        </NavigationContainer>
+          </NavigationContainer>
+        // </Provider>
       )
   } else {
       return(
@@ -108,4 +160,5 @@ export default App = () => {
 
 }
 
-
+// (am i missing state to props????)
+export default connect(state => ({ token: state.token }), { loginSuccess })(App)
