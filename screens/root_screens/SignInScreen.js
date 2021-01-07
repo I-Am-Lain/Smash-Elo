@@ -72,24 +72,22 @@ const SignInScreen = (props) => {
             if (json.error){
                 alert('WRONGG')
             } else {
-
-                alert('SUCCESS'); // this semicolon prevents JS from returning the async() to console.log
                 
-                console.log(json)
+                console.log(json); // this semicolon prevents JS from returning the async() to console.log
 
 
                 const saveData = async () => {
                     try {
                       await AsyncStorage.setItem('MYFINALKEY4', json.token)
-                      alert('Data successfully saved in Async Storage :)')
+                    //   alert('Data successfully saved in Async Storage :)')
                     } catch (e) {
                       alert('Failed to save the data to the storage :(')
                     }
-                }
+                };
 
-                saveData()
+                saveData();
 
-                props.loginSuccess(json)
+                props.loginSuccess(json);
 
                 
             }

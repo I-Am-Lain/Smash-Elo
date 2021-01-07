@@ -11,6 +11,8 @@ import Card from './Card'
 
 import { connect } from 'react-redux'
 
+import { tournamentSuccess } from '../actions/'
+
 
 class TournamentStackScreen extends React.Component {
 
@@ -65,7 +67,10 @@ class TournamentStackScreen extends React.Component {
             this.timerID = setInterval(async () => {
                 const resp = await fetch('https://api.smash.gg/gql/alpha', configRequest);
                 const jsonResponse = await resp.json();
+                    
                     // console.log(jsonResponse)
+                    this.props.tournamentSuccess(jsonResponse);
+
                 const myTournamentData = await jsonResponse.data.tournaments.nodes.map(node => {
                     return node.name
 
@@ -141,4 +146,4 @@ class TournamentStackScreen extends React.Component {
     )}
 }
 
-export default connect()(TournamentStackScreen)
+export default connect(state => ({ tournaments: state.tournaments }), { tournamentSuccess })(TournamentStackScreen)

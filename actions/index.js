@@ -12,16 +12,9 @@ export const logoutUser = () => {
     }
 }
 
-// export const createTodo = (todo) => {
-//     return {
-//         type: 'CREATE_TODO',
-//         todo
-//     }
-// }
-
-// export const deleteUser = (id) => {
-//     return {
-//         type: 'DELETE_USER',
-//         id
-//     }
-// }
+export const tournamentSuccess = (tournament) => {
+    return {
+        type: 'TOURNAMENT_SUCCESS',
+        tournament
+    }
+}

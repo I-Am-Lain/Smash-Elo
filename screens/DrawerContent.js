@@ -30,12 +30,16 @@ const DrawerContent = (props) => {
     }
 
     const handlePress = () => {
-        alert('WE MOVIN (from DrawerContent)')
+
+        alert('Goodbye :) (from DrawerContent)')
         AsyncStorage.removeItem('MYFINALKEY4');
 
         props.logoutUser();
+
     }
 
+
+    
     return (
         <View style={{flex: 1}}>
             <DrawerContentScrollView {...props}>
@@ -111,7 +115,7 @@ const DrawerContent = (props) => {
                                 <Icon name='eye-settings-outline' color={color} size={size}/>
 
                             )}
-                            label='Settings'
+                            label='About'
                             onPress={() => {props.navigation.navigate('About')}}
                         />
                         <DrawerItem
