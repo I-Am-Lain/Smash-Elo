@@ -5,7 +5,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 
-import {StackActions} from 'react-navigation'
 
 
 import * as Animatable from 'react-native-animatable'
@@ -13,7 +12,7 @@ import * as Animatable from 'react-native-animatable'
 import { connect } from 'react-redux'
 import { loginSuccess } from '../../actions/'
 
-import { CommonActions } from '@react-navigation/native';
+
 
 const SignInScreen = (props) => {
 
@@ -70,63 +69,27 @@ const SignInScreen = (props) => {
         fetch('http://192.168.1.11:4000/api/v1/auth', configRequest)
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
             if (json.error){
                 alert('WRONGG')
             } else {
-                //dispatch action to reducer with LOGIN_SUCCESS, with user data
-                //save user token in AsyncStorage
-                //redirect to props.navigation.navigate('Home')
 
                 alert('SUCCESS'); // this semicolon prevents JS from returning the async() to console.log
                 
                 console.log(json)
-                console.log('yayuhzzzzzzzz')
 
 
                 const saveData = async () => {
                     try {
-                      await AsyncStorage.setItem('MYFINALKEY', json.token)
+                      await AsyncStorage.setItem('MYFINALKEY4', json.token)
                       alert('Data successfully saved in Async Storage :)')
                     } catch (e) {
                       alert('Failed to save the data to the storage :(')
                     }
                 }
 
-                props.loginSuccess(json)
-
                 saveData()
 
-                // props.navigation.dispatch(
-                //     CommonActions.navigate({
-                //       name: 'MainTabScreen'
-                //     })
-                //   );
-
-
-                // const navigateAction = StackActions.reset({
-                //     index: 0,
-                //     key: null,
-                //     actions: [CommonActions.navigate({ routeName: 'Support' })]
-                // })
-                // this.props.navigation.dispatch(navigateAction)
-                
-                // props.navigation.navigate('DrawerContent', { screen: 'Home' } )
-                
-                // const readData = async () => {
-                //     try {
-                //       const userAge = await AsyncStorage.getItem('babysfirstkey')
-                  
-                //       if (userAge !== null) {
-                //         console.log(userAge)
-                //       } else {console.log('failure')}
-                //     } catch (e) {
-                //       alert('Failed to fetch the data from storage')
-                //     }
-
-                // }
-    
-                // console.log(readData()) // this is just returning a promise
+                props.loginSuccess(json)
 
                 
             }

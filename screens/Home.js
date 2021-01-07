@@ -1,24 +1,27 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from  'react-native'
+import { AsyncStorage, StyleSheet, View, Text, TouchableOpacity } from  'react-native'
 
 import { global } from '../styles/global'
 
-import { loginSuccess } from '../actions/'
+import { loginSuccess, logoutUser } from '../actions/'
 import { connect } from 'react-redux'
 
 const Home = (props) => {
+    // const handlePress = () => {
+    //     alert('WE MOVIN')
+
+    //     AsyncStorage.removeItem('MYFINALKEY4');
+
+    //     console.log(props.token);
+    //     props.logoutUser();
+    //     console.log(props.token);    // DONT TRUST THIS, it's evaluating too soon after the dispatch action
+    // }
 
     const handlePress = () => {
-        alert('WE MOVIN')
-        // props.navigation.navigate('About')
-        // navigation.goBack() will pop one off
-        // navigation.popToTop()
-        console.log(props.token)
-        props.loginSuccess({user: 'hello', token: null})
-        console.log(props.token)
-        
+        alert(props.user.username)
+        console.log(props.token, props.user.username)
     }
-
+    
     return (
         <View style={global.container}>
             <Text style={global.titleText}> Home Screen </Text>
@@ -29,4 +32,4 @@ const Home = (props) => {
     )
 }
 
-export default connect(state => ({ token: state.token }), {loginSuccess})(Home)
+export default connect(state => (state), { logoutUser })(Home)

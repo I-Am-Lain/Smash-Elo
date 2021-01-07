@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { AsyncStorage, View } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import {
     Avatar,
@@ -16,13 +16,24 @@ import { global } from '../styles/global'
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import { logoutUser } from '../actions/'
 
-export default DrawerContent = (props) => {
+import { connect } from 'react-redux'
+
+
+const DrawerContent = (props) => {
 
     const [darkTheme, setDarkTheme] = useState(false)
 
     const toggleTheme = () => {
         setDarkTheme(!darkTheme)
+    }
+
+    const handlePress = () => {
+        alert('WE MOVIN (from DrawerContent)')
+        AsyncStorage.removeItem('MYFINALKEY4');
+
+        props.logoutUser();
     }
 
     return (
@@ -136,9 +147,11 @@ export default DrawerContent = (props) => {
 
                     )}
                     label='Sign Out'
-                    onPress={() => {}}
+                    onPress={handlePress}
                 />
             </Drawer.Section>
         </View>
     )
 }
+
+export default connect(null, { logoutUser })(DrawerContent)
