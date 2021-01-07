@@ -6,7 +6,7 @@ export const global = StyleSheet.create({
         flex: 1,
         paddingTop: 10,
         /* can hide bottom of chat by increasing this global container's bottom padding */
-        /* THIS WILL AFFECT ALL THINGS USING CONTAINER THO */
+        /* THIS WILL AFFECT ALL THINGS USING CONTAINER THO 122 */
         paddingBottom: 10,
         alignItems: 'center'
     },

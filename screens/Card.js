@@ -18,7 +18,7 @@ export default function Card(props) {
         <View style={global.container}>
 
 
-            <Text style={global.titleText}> ~Bracket Match~ </Text>
+            {/* <Text style={global.titleText}> ~Bracket~ </Text> */}
 
 
             <TouchableOpacity style={global.button} onPress={handlePress} >
@@ -27,15 +27,24 @@ export default function Card(props) {
 
 
             <View style={global.container}>
+                <WebView style={{ width: 275, marginBottom: 0}}
+                    scrollEnabled={false}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    source={{ uri: "http://www.twitch.tv/lordyhotdog" }}
+                />
+            </View>
+
+                        <View style={global.container}>
                 <WebView style={{ width: 360}}
                     scrollEnabled={false}
                     javaScriptEnabled={true}
                     domStorageEnabled={true}
-                    source={{ uri: "http://www.twitch.tv/saltybet" }}
+                    source={{ uri: "http://www.twitch.tv/lordyhotdog/chat" }}
                 />
             </View>
             
-            <TextInput placeholder='place your bets...'/>
+            {/* <TextInput placeholder='place your bets...'/> */}
 
         </View>
     )
