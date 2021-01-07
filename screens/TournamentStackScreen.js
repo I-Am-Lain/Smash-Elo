@@ -26,6 +26,7 @@ export default TournamentStackScreen = ({navigation}) => {
                     backgroundColor='#1f65ff' onPress={() => navigation.openDrawer()}></Icon.Button>
                 )
             }} />
+            
         </TournamentStack.Navigator>
     )
 }

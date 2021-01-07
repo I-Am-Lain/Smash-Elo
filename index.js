@@ -2,8 +2,6 @@ import React from 'react'
 
 import { registerRootComponent } from 'expo'
 
-import { StatusBar } from 'expo-status-bar';
-
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 

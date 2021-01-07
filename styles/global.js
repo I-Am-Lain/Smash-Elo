@@ -4,8 +4,10 @@ import { StyleSheet } from 'react-native'
 export const global = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 30,
-        paddingTop: 100,
+        paddingTop: 10,
+        /* can hide bottom of chat by increasing this global container's bottom padding */
+        /* THIS WILL AFFECT ALL THINGS USING CONTAINER THO */
+        paddingBottom: 10,
         alignItems: 'center'
     },
     titleText: {
