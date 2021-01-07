@@ -3,12 +3,20 @@ import { StyleSheet, View, Text, TouchableOpacity } from  'react-native'
 
 import { global } from '../styles/global'
 
-export default function Home(props) {
+import { loginSuccess } from '../actions/'
+import { connect } from 'react-redux'
+
+const Home = (props) => {
 
     const handlePress = () => {
-        props.navigation.navigate('About')
+        alert('WE MOVIN')
+        // props.navigation.navigate('About')
         // navigation.goBack() will pop one off
         // navigation.popToTop()
+        console.log(props.token)
+        props.loginSuccess({user: 'hello', token: null})
+        console.log(props.token)
+        
     }
 
     return (
@@ -20,3 +28,5 @@ export default function Home(props) {
         </View>
     )
 }
+
+export default connect(state => ({ token: state.token }), {loginSuccess})(Home)

@@ -63,7 +63,7 @@ const App = (props) => {
     // !!! apparently don't use async functions in useEffect
     async function fetchCredentials() {
       // loginSuccess(await AsyncStorage.getItem('change me to lainskey'));
-      userToken = await AsyncStorage.getItem('lainskeyyyy');
+      userToken = await AsyncStorage.getItem('MYFINALKEY');
 
       userToken !== null ?
       fetch('http://192.168.1.11:4000/api/v1/auth/1', {
@@ -132,14 +132,14 @@ const App = (props) => {
             {
               
               props.token === null ?
+              <RootStackScreen />
+              :
               <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
 
                 <Drawer.Screen name='HomeDrawer' component={MainTabScreen} />
                 <Drawer.Screen name='Support' component={SupportScreen} />
 
               </Drawer.Navigator>
-              :
-              <RootStackScreen />
             }
               
               

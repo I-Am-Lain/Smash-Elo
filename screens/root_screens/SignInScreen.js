@@ -86,7 +86,7 @@ const SignInScreen = (props) => {
 
                 const saveData = async () => {
                     try {
-                      await AsyncStorage.setItem('lainskeyyyy', json.token)
+                      await AsyncStorage.setItem('MYFINALKEY', json.token)
                       alert('Data successfully saved in Async Storage :)')
                     } catch (e) {
                       alert('Failed to save the data to the storage :(')
