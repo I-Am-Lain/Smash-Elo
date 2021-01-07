@@ -9,18 +9,21 @@ import { connect } from 'react-redux'
 const Home = (props) => {
 
     const handlePress = () => {
-        alert(props.user.username)
-        console.log(props.token, props.user.username)
+        props.navigation.navigate('Tournaments')
     }
     
     return (
         <View style={global.container}>
             
-            <Text style={global.titleText}> Home Screen </Text>
+            <Text style={global.titleText}> Home </Text>
+
+            <Text style={global.titleText}>Insert Logo Here </Text>
+
+            {/*maybe show animations displaying some marketing info*/}
             
 
             <TouchableOpacity style={global.button} onPress={handlePress} >
-                <Text>Hotdog</Text>
+                <Text>Tournaments</Text>
             </TouchableOpacity>
         
         </View>

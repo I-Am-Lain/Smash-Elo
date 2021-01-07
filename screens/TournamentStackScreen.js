@@ -12,6 +12,9 @@ import Card from './Card'
 const myArray = ['foo', 'bar', 'bas']
 
 export default TournamentStackScreen = ({navigation}) => {
+
+    
+
     return (
         <TournamentStack.Navigator screenOptions={{
             headerStyle: {

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from  'react-native'
 
 import { global } from '../styles/global'
 
 import Card from './Card'
 
-const myArray = ['foo', 'bar', 'bas']
 
 
 export default function Tournaments(props) {
 
+    const [names, setNames] = useState(['foo', 'bar', 'bas'])
+    
 
     const handlePress = (name) => {
         props.navigation.navigate(name)
@@ -17,17 +18,22 @@ export default function Tournaments(props) {
         // navigation.popToTop()
     }
 
+    const deleteCard = () => {
+        setNames(['foo', 'bar'])
+        console.log(names)
+    }
+
     return (
         <View style={global.container}>
 
             <Text style={global.titleText}> Tournaments Screen </Text>
 
-            <TouchableOpacity style={global.button} onPress={handlePress} >    
+            <TouchableOpacity style={global.button} onPress={deleteCard} >    
                 <Text>Go back</Text>
             </TouchableOpacity>
 
             {
-                myArray.map(name => {
+                names.map(name => {
                     console.log(name)
                     return(
                     <TouchableOpacity style={global.button} onPress={() => handlePress(name)} >    
