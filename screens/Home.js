@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 const Home = (props) => {
 
     const handlePress = () => {
-        props.navigation.navigate('Tournaments')
+        props.navigation.navigate('Bourbon State Gaming: Barrel Bash V')
     }
     
     return (
@@ -23,7 +23,7 @@ const Home = (props) => {
             
 
             <TouchableOpacity style={global.button} onPress={handlePress} >
-                <Text>Tournaments</Text>
+                <Text>to Bourbon</Text>
             </TouchableOpacity>
         
         </View>

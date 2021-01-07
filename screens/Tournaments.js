@@ -9,46 +9,59 @@ import { connect } from 'react-redux'
 
 
 
-const Tournaments = (props) => {
+class Tournaments extends React.Component {
+
+    state = {
+        cardTournaments: null
+    }
+
+    componentDidMount(){
+        console.log('===========================================================================')
+        this.setState({
+            cardTournaments: this.props.tournaments
+        })
+    }
 
 
-    const handlePress = (name) => {
-        props.navigation.navigate(name)
+    handlePress = (name) => {
+        this.props.navigation.navigate(name)
         // navigation.goBack() will pop one off
         // navigation.popToTop()
     }
 
-    const goBack = () => {
-        props.navigation.navigate('Bourbon State Gaming: Barrel Bash V')
+    goBack = () => {
+        this.props.navigation.navigate('Bourbon State Gaming: Barrel Bash V')
         // console.log(props)
 
     }
 
-    return (
-        <View style={global.container}>
+    render(){
+        return (
+            <View style={global.container}>
 
-            <Text style={global.titleText}> Tournaments Screen </Text>
+                <Text style={global.titleText}> Tournaments Screen </Text>
 
-            <TouchableOpacity style={global.button} onPress={goBack} >    
-                <Text>Go back</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={global.button} onPress={this.goBack} >    
+                    <Text>Go back</Text>
+                </TouchableOpacity>
 
-            {/* {
-                Object.keys(props.tournaments).length === 0 ?
-                props.tournaments.data.tournaments.nodes.map(node => {
-                    return(
-                    <TouchableOpacity style={global.button} onPress={() => handlePress(node.name)} >    
-                        <Text>{node.name}</Text>
-                    </TouchableOpacity>
-                    )
-                })
-                // console.log(props)
-                :
-                console.log('TOURNAMENTS.JS STILL BROKEN!!!!!!!!!!!!!!!!!!!!!!!!')
-            
-            }  */}
-        </View>
+                {
+                    this.state.cardTournaments !== null ?
+                    // this.state.cardTournaments.data.tournaments.nodes.map(node => {
+                    //     return(
+                    //     <TouchableOpacity style={global.button} onPress={() => handlePress(node.name)} >    
+                    //         <Text>{node.name}</Text>
+                    //     </TouchableOpacity>
+                    //     )
+                    // })
+                    console.log('iam truthy')
+                    :
+                    console.log('TOURNAMENTS.JS STILL BROKEN!!!!!!!!!!!!!!!!!!!!!!!!')
+                
+                } 
+            </View>
     )
+    }
 }
 
-export default connect(state => ({ tournaments: state.tournaments, token: state.token }))(Tournaments)
+export default connect(state => ({ tournaments: state.tournaments }))(Tournaments)

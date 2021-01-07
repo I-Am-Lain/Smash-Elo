@@ -67,18 +67,18 @@ const DrawerContent = (props) => {
                         <View style={global.row}>
                             <View style={global.section} >
                                 <Paragraph style={[global.paragraph, global.caption]}>
-                                    80
+                                    Bank
                                 </Paragraph>
                                 <Caption style={global.caption} >
-                                    Following
+                                    $1000
                                 </Caption>
                             </View>
                             <View style={global.section} >
                                 <Paragraph style={[global.paragraph, global.caption]}>
-                                    100
+                                    icon
                                 </Paragraph>
                                 <Caption style={global.caption} >
-                                    Followers
+                                    Reload Available
                                 </Caption>
                             </View>
                         </View>
