@@ -9,9 +9,15 @@ const TournamentStack = createStackNavigator()
 
 import Card from './Card'
 
-const myArray = ['foo', 'bar', 'bas']
+import { connect } from 'react-redux'
+
 
 class TournamentStackScreen extends React.Component {
+
+    ////////////////////////////////////////// remove this
+    state = {
+        currentTournaments: []
+    }
 
     componentDidMount(){
         
@@ -29,8 +35,7 @@ class TournamentStackScreen extends React.Component {
                             page: 1
                             sortBy: "startAt asc"
                             filter: {
-                                afterDate: 1609592400
-                                beforeDate: 1609675200
+                                afterDate: 1641517200
                                 videogameIds: [
                                     1386
                                 ]
@@ -72,11 +77,11 @@ class TournamentStackScreen extends React.Component {
                     // }
                 })
 
-                
+                ////////////////////////////////////////// remove this
                 this.setState({
-                    setArray: myTournamentData
+                    currentTournaments: myTournamentData
                 })
-                
+                ////////////////////////////////////////// remove this
                 console.log(this.state)
 
                 }, 3000);
@@ -119,8 +124,8 @@ class TournamentStackScreen extends React.Component {
 
 
                 {
-                    myArray.map(title => {
-                        return <TournamentStack.Screen name={title} component={Card} options={{
+                    this.state.currentTournaments.map(title => {
+                        return <TournamentStack.Screen key={title} name={title} component={Card} options={{
                             title: title,
                             headerLeft: () => (
                                 <Icon.Button name='ios-menu' size={25}
@@ -136,4 +141,4 @@ class TournamentStackScreen extends React.Component {
     )}
 }
 
-export default TournamentStackScreen
+export default connect()(TournamentStackScreen)

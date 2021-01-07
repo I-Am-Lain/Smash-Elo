@@ -9,8 +9,6 @@ import Card from './Card'
 
 export default function Tournaments(props) {
 
-    const [names, setNames] = useState(['foo', 'bar', 'bas'])
-    
 
     const handlePress = (name) => {
         props.navigation.navigate(name)
@@ -18,9 +16,9 @@ export default function Tournaments(props) {
         // navigation.popToTop()
     }
 
-    const deleteCard = () => {
-        setNames(['foo', 'bar'])
-        console.log(names)
+    const goBack = () => {
+        props.navigation.navigate('Hello World')
+        // console.log(screenProps)
     }
 
     return (
@@ -28,12 +26,13 @@ export default function Tournaments(props) {
 
             <Text style={global.titleText}> Tournaments Screen </Text>
 
-            <TouchableOpacity style={global.button} onPress={deleteCard} >    
-                <Text>Go back</Text>
+            <TouchableOpacity style={global.button} onPress={goBack} >    
+                <Text>{props.currentTournaments ? props.currentTournaments[0] : 'Go back'}</Text>
             </TouchableOpacity>
 
             {
-                names.map(name => {
+                props.currentTournaments ?
+                props.currentTournaments.map(name => {
                     console.log(name)
                     return(
                     <TouchableOpacity style={global.button} onPress={() => handlePress(name)} >    
@@ -41,6 +40,8 @@ export default function Tournaments(props) {
                     </TouchableOpacity>
                     )
                 })
+                :
+                console.log('no tourneys yet')
             
             }
         </View>
