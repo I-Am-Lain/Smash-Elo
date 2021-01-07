@@ -7,6 +7,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 const TournamentStack = createStackNavigator()
 
+import Card from './Card'
+
+const myArray = ['foo', 'bar', 'bas']
 
 export default TournamentStackScreen = ({navigation}) => {
     return (
@@ -19,6 +22,9 @@ export default TournamentStackScreen = ({navigation}) => {
                 fontWeight: 'bold'
             }
         }}>
+
+
+
             <TournamentStack.Screen name='Tournaments' component={Tournaments} options={{
                 title: 'Tournaments',
                 headerLeft: () => (
@@ -26,7 +32,23 @@ export default TournamentStackScreen = ({navigation}) => {
                     backgroundColor='#1f65ff' onPress={() => navigation.openDrawer()}></Icon.Button>
                 )
             }} />
-            
+
+
+
+            {
+                myArray.map(title => {
+                    return <TournamentStack.Screen name={title} component={Card} options={{
+                        title: title,
+                        headerLeft: () => (
+                            <Icon.Button name='ios-menu' size={25}
+                            backgroundColor='#1f65ff' onPress={() => navigation.openDrawer()}></Icon.Button>
+                        )
+                    }} />
+                })
+            }
+
+
+
         </TournamentStack.Navigator>
     )
 }
