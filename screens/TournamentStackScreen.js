@@ -16,10 +16,11 @@ import { tournamentSuccess } from '../actions/'
 
 class TournamentStackScreen extends React.Component {
 
-    ////////////////////////////////////////// remove this
     state = {
-        currentTournaments: []
+        myTournaments: {}
     }
+
+    
 
     componentDidMount(){
         
@@ -63,37 +64,29 @@ class TournamentStackScreen extends React.Component {
                     }`
             })} 
 
+
+        // Begin Request to SmashGG
         try {
             this.timerID = setInterval(async () => {
                 const resp = await fetch('https://api.smash.gg/gql/alpha', configRequest);
                 const jsonResponse = await resp.json();
-                    
-                    // console.log(jsonResponse)
+                    console.log(jsonResponse)
+
                     this.props.tournamentSuccess(jsonResponse);
 
-                const myTournamentData = await jsonResponse.data.tournaments.nodes.map(node => {
-                    return node.name
+                    // const tourneyNames = jsonResponse.tournaments.data.tournaments.nodes.map(node => {
+                    //     return node.name
+                    // });
 
-                    // return {
-                    //     stateOfMatch: set.state,
-                    //     p1: set.slots[0].seed ? set.slots[0].seed.entrant.name : 'not matched yet',
-                    //     p2: set.slots[1].seed ? set.slots[1].seed.entrant.name : 'not matched yet',
-                    //     winnerId: set.winnerId
-                    // }
-                })
-
-                ////////////////////////////////////////// remove this
-                this.setState({
-                    currentTournaments: myTournamentData
-                })
-                ////////////////////////////////////////// remove this
-                console.log(this.state)
+                    this.setState({
+                        myTournaments: jsonResponse
+                    });
 
                 }, 3000);
         }   
         catch(e) {
             console.log(e);
-            }
+        }
 
     }
 
@@ -129,15 +122,19 @@ class TournamentStackScreen extends React.Component {
 
 
                 {
-                    this.state.currentTournaments.map(title => {
-                        return <TournamentStack.Screen key={title} name={title} component={Card} options={{
-                            title: title,
+                    Object.keys(this.state.myTournaments).length !== 0 ?
+                    this.state.myTournaments.data.tournaments.nodes.map(node => {
+                        return (<TournamentStack.Screen key={node.name} name={node.name} component={Card} options={{
+                            title: node.name,
                             headerLeft: () => (
                                 <Icon.Button name='ios-menu' size={25}
                                 backgroundColor='#1f65ff' onPress={() => this.props.navigation.openDrawer()}></Icon.Button>
                             )
-                        }} />
+                        }} />)
                     })
+                    // console.log(this.props)
+                    :
+                    console.log('waiting.....')
                 }
 
 

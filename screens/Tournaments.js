@@ -19,8 +19,8 @@ const Tournaments = (props) => {
     }
 
     const goBack = () => {
-        // props.navigation.navigate('Hello World')
-        console.log(props.tournaments.data.tournaments.nodes[0].name)
+        props.navigation.navigate('Bourbon State Gaming: Barrel Bash V')
+        // console.log(props)
 
     }
 
@@ -33,8 +33,8 @@ const Tournaments = (props) => {
                 <Text>Go back</Text>
             </TouchableOpacity>
 
-            {
-                props.tournaments !== [] || props.tournaments !== null ?
+            {/* {
+                Object.keys(props.tournaments).length === 0 ?
                 props.tournaments.data.tournaments.nodes.map(node => {
                     return(
                     <TouchableOpacity style={global.button} onPress={() => handlePress(node.name)} >    
@@ -42,10 +42,11 @@ const Tournaments = (props) => {
                     </TouchableOpacity>
                     )
                 })
+                // console.log(props)
                 :
-                console.log('tournaments still loading. or an error lol')
+                console.log('TOURNAMENTS.JS STILL BROKEN!!!!!!!!!!!!!!!!!!!!!!!!')
             
-            }
+            }  */}
         </View>
     )
 }
