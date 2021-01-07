@@ -27,7 +27,7 @@ class Tournaments extends React.Component {
 
 
     handlePress = (name) => {
-        this.props.navigation.navigate(name)
+        this.props.navigation.navigate('Hello World')
         // navigation.goBack() will pop one off
         // navigation.popToTop()
     }

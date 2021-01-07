@@ -59,7 +59,7 @@ const DrawerContent = (props) => {
                                     William Vetter
                                 </Title>
                                 <Caption style={global.caption}>
-                                    @I-Am-Lain
+                                    Silver Tier Subscriber
                                 </Caption>
                             </View>
                         </View>
@@ -67,7 +67,7 @@ const DrawerContent = (props) => {
                         <View style={global.row}>
                             <View style={global.section} >
                                 <Paragraph style={[global.paragraph, global.caption]}>
-                                    $1,000
+                                    §72,000
                                 </Paragraph>
 
                             </View>

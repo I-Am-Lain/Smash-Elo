@@ -9,7 +9,7 @@ import { WebView } from 'react-native-webview';
 export default function Card(props) {
 
     const handlePress = () => {
-        props.navigation.goBack()
+        props.navigation.popToTop()
         // navigation.goBack() will pop one off
         // navigation.popToTop()
     }
@@ -18,14 +18,13 @@ export default function Card(props) {
         <View style={global.container}>
 
 
-            <Text style={global.titleText}> Please your bets </Text>
+            <Text style={global.titleText}> ~Bracket Match~ </Text>
 
 
             <TouchableOpacity style={global.button} onPress={handlePress} >
                 <Text>Back to Home</Text>
             </TouchableOpacity>
 
-            <TextInput placeholder='place your bets...'/>
 
             <View style={global.container}>
                 <WebView style={{ width: 360}}
@@ -36,6 +35,7 @@ export default function Card(props) {
                 />
             </View>
             
+            <TextInput placeholder='place your bets...'/>
 
         </View>
     )
